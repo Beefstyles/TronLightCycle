@@ -12,6 +12,31 @@ public class GridGenerator : MonoBehaviour {
     private GridObject goHolder;
     public Transform gridParent;
 
+    public int Width
+    {
+        get
+        {
+            return width;
+        }
+
+        set
+        {
+            width = value;
+        }
+    }
+    public int Height
+    {
+        get
+        {
+            return height;
+        }
+
+        set
+        {
+            height = value;
+        }
+    }
+
     void Start ()
     {
         grid = new GameObject[width, height];
