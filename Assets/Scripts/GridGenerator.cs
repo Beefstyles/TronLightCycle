@@ -10,6 +10,7 @@ public class GridGenerator : MonoBehaviour {
     private GameObject gridObject;
     private GameObject[,] grid;
     private GridObject goHolder;
+    public Transform gridParent;
 
     void Start ()
     {
@@ -24,7 +25,7 @@ public class GridGenerator : MonoBehaviour {
             for (int y = 0; y < height; y++)
             {
                 GameObject go = Instantiate(gridObject);
-                go.transform.parent = transform.parent;
+                go.transform.parent = gridParent;
                 go.transform.position = new Vector2(
                     go.transform.position.x + x,
                     go.transform.position.y + y);

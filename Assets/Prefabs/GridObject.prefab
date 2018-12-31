@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212243151531557412}
   - component: {fileID: 114760749539297316}
   - component: {fileID: 65618774846255176}
+  - component: {fileID: 114227047307402510}
   m_Layer: 0
   m_Name: GridObject
   m_TagString: Untagged
@@ -54,6 +55,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114227047307402510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1996940135810738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd66366245dbcd47837c1d0216e6c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.043144446, g: 0.97794116, b: 0.5524474, a: 1}
 --- !u!114 &114760749539297316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ce7f6e91f98fe4cb990997c500a5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ypos: 0
   xpos: 0
+  ypos: 0
 --- !u!212 &212243151531557412
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -81,7 +94,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6125ea29b2b0ab24fafa75a01129fec6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
