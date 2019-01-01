@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour {
 	
     IEnumerator DelayCameraMovement()
     {
-        yield return new WaitForSeconds(0.1F);
+        yield return new WaitForSeconds(seconds: 0.01F);
         cam.orthographicSize = gg.Width / 2;
         cam.transform.position = new Vector3(gg.Width / 2  - 0.5F, gg.Height / 2 - 0.5F, -5F);
     }
