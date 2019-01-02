@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xpos: 0
   ypos: 0
+  TrailMade: 0
 --- !u!212 &212243151531557412
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -113,7 +114,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5d84ee03c8ab19f4a87f493f8cffcf65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

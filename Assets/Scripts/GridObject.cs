@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class GridObject : MonoBehaviour {
 
     [SerializeField]
@@ -14,21 +15,30 @@ public class GridObject : MonoBehaviour {
 
     public bool TrailMade;
     private SpriteRenderer sr;
+    private PlayerInformation pi;
+
+    void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+
+    }
 
     private void OnTriggerEnter(Collider coll)
     {
-        if (!TrailMade && coll.tag == "Player")
-        {
-            TrailMade = true;
-        }
+        
     }
 
     private void OnTriggerExit(Collider coll)
     {
         if (!TrailMade && coll.tag == "Player")
         {
+            Debug.Log("Left");
             TrailMade = true;
-
+            pi = coll.GetComponent<PlayerInformation>();
+            if (pi != null)
+            {
+                sr.color = new Color(pi.trailColour.r, pi.trailColour.g, pi.trailColour.b, 255);
+            }
         }
     }
 }
