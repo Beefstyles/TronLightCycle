@@ -8,9 +8,11 @@ public class GameControl : MonoBehaviour {
     public GameObject PlayerObject;
     private GameObject po;
     private Vector3 playerSpawnLoc;
+    private GridGenerator gg;
 
 	void Start ()
     {
+        gg = FindObjectOfType<GridGenerator>();
         StartCoroutine("DelaySpawn");
     }
 
@@ -18,7 +20,6 @@ public class GameControl : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.1F);
         FindSpawnLocAndSpawn();
-
     }
 
     private void FindSpawnLocAndSpawn()

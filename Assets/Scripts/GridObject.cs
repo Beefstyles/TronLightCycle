@@ -32,7 +32,6 @@ public class GridObject : MonoBehaviour {
     {
         if (!TrailMade && coll.tag == "Player")
         {
-            Debug.Log("Left");
             TrailMade = true;
             pi = coll.GetComponent<PlayerInformation>();
             if (pi != null)
