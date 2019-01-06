@@ -23,7 +23,7 @@ public class GridMove : MonoBehaviour {
     private Orientation gridOrientation = Orientation.Horizontal;
     private Direction bikeDirection = Direction.Up;
     [SerializeField]
-    private bool _allowDiagonals = false;
+    private bool allowDiagonals = false;
     private bool correctDiagonalSpeed = true;
     [SerializeField]
     private Vector2 input = Vector2.up;
@@ -106,7 +106,7 @@ public class GridMove : MonoBehaviour {
         endPosition = new Vector3(startPosition.x + xMovement * _gridSize,
         startPosition.y + yMovement * _gridSize, startPosition.z);
 
-        if(_allowDiagonals && correctDiagonalSpeed)
+        if(allowDiagonals && correctDiagonalSpeed)
         {
             factor = 0.707F;
         }
