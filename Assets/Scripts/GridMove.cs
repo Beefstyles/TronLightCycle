@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GridMove : MonoBehaviour {
-
+    
     [SerializeField]
     private float _moveSpeed = 5F;
     private float _gridSize = 1F;
+    private float moveTimer;
     private enum Orientation
     {
         Horizontal,
@@ -20,20 +21,29 @@ public class GridMove : MonoBehaviour {
         Left,
         Right
     };
+    
     private Orientation gridOrientation = Orientation.Horizontal;
+    [SerializeField]
     private Direction bikeDirection = Direction.Up;
     [SerializeField]
     private bool allowDiagonals = false;
     private bool correctDiagonalSpeed = true;
     [SerializeField]
     private Vector2 input = Vector2.up;
-    private bool isMoving = true;
+    [SerializeField]
+    private bool isMoving = false;
     private Vector3 startPosition;
     private Vector3 endPosition;
+    [SerializeField]
     private float t;
     private float factor;
     private int xMovement, yMovement;
 
+
+    void Awake()
+    {
+        moveTimer = 1;
+    }
     void Update()
     {
         if (!isMoving)
@@ -115,7 +125,7 @@ public class GridMove : MonoBehaviour {
             factor = 1F;
         }
 
-        while (t < 1F)
+        while (t < moveTimer)
         {
             t += Time.deltaTime * (_moveSpeed / _gridSize) * factor;
             transform.position = Vector3.Lerp(startPosition, endPosition, t);
