@@ -39,6 +39,20 @@ public class GridMove : MonoBehaviour {
     private float factor;
     private int xMovement, yMovement;
 
+    private bool canMove = true;
+
+    public bool CanMove
+    {
+        get
+        {
+            return canMove;
+        }
+
+        set
+        {
+            canMove = value;
+        }
+    }
 
     void Awake()
     {
@@ -46,7 +60,7 @@ public class GridMove : MonoBehaviour {
     }
     void Update()
     {
-        if (!isMoving)
+        if (canMove)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {

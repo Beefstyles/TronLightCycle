@@ -16,6 +16,7 @@ public class GridObject : MonoBehaviour {
     public bool TrailMade;
     private SpriteRenderer sr;
     private PlayerInformation pi;
+    private GridMove gm;
 
     void Awake()
     {
@@ -33,10 +34,15 @@ public class GridObject : MonoBehaviour {
         if (!TrailMade && coll.tag == "Player")
         {
             TrailMade = true;
-            pi = coll.GetComponent<PlayerInformation>();
+            pi = coll.GetComponentInParent<PlayerInformation>();
+            gm = coll.GetComponent<GridMove>();
             if (pi != null)
             {
                 sr.color = new Color(pi.trailColour.r, pi.trailColour.g, pi.trailColour.b, 255);
+            }
+            if (gm != null)
+            {
+                gm.CanMove = true;
             }
         }
     }
