@@ -26,127 +26,58 @@ public class GridMove : MonoBehaviour {
     [SerializeField]
     private Direction bikeDirection = Direction.Up;
     [SerializeField]
-    private bool allowDiagonals = false;
-    private bool correctDiagonalSpeed = true;
-    [SerializeField]
     private Vector2 input = Vector2.up;
     [SerializeField]
-    private bool isMoving = false;
-    private Vector3 startPosition;
-    private Vector3 endPosition;
-    [SerializeField]
-    private float t;
-    private float factor;
-    private int xMovement, yMovement;
-
-    private bool canMove = true;
-
-    public bool CanMove
+    private float invokeTime, repeatTime;
+ 
+    void Start()
     {
-        get
-        {
-            return canMove;
-        }
-
-        set
-        {
-            canMove = value;
-        }
+        InvokeRepeating("MoveBike", invokeTime, repeatTime);
     }
-
     void Awake()
     {
         moveTimer = 1;
     }
     void Update()
     {
-        if (canMove)
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if(bikeDirection != Direction.Right)
             {
                 input = Vector2.left;
                 bikeDirection = Direction.Left;
             }
-            if (Input.GetKey(KeyCode.RightArrow))
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            if(bikeDirection != Direction.Left)
             {
                 input = Vector2.right;
                 bikeDirection = Direction.Right;
             }
-            if (Input.GetKey(KeyCode.UpArrow))
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if (bikeDirection != Direction.Down)
             {
                 input = Vector2.up;
                 bikeDirection = Direction.Up;
             }
-            if (Input.GetKey(KeyCode.DownArrow))
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            if(bikeDirection != Direction.Up)
             {
                 input = Vector2.down;
                 bikeDirection = Direction.Down;
             }
-            /*if (!_allowDiagonals)
-            {
-                if(Mathf.Abs(input.x) > Mathf.Abs(input.y))
-                {
-                    input.y = 0;
-                }
-                else
-                {
-                    input.x = 0;
-                }
-            }
-            */
-
-
-            if (input != Vector2.zero)
-            {
-                StartCoroutine(Move(transform));
-            }
         }
     }
 
-    private IEnumerator Move(Transform transform)
+    void MoveBike()
     {
-        isMoving = true;
-        startPosition = transform.position;
-        t = 0;
-        switch (bikeDirection)
-        {
-            case Direction.Up:
-                xMovement = 0;
-                yMovement = 1;
-                break;
-            case Direction.Down:
-                xMovement = 0;
-                yMovement = -1;
-                break;
-            case Direction.Left:
-                xMovement = -1;
-                yMovement = 0;
-                break;
-            case Direction.Right:
-                xMovement = 1;
-                yMovement = 0;
-                break;
-        }
-        endPosition = new Vector3(startPosition.x + xMovement * _gridSize,
-        startPosition.y + yMovement * _gridSize, startPosition.z);
-
-        if(allowDiagonals && correctDiagonalSpeed)
-        {
-            factor = 0.707F;
-        }
-        else
-        {
-            factor = 1F;
-        }
-
-        while (t < moveTimer)
-        {
-            t += Time.deltaTime * (_moveSpeed / _gridSize) * factor;
-            transform.position = Vector3.Lerp(startPosition, endPosition, t);
-            yield return null;
-        }
-        isMoving = false;
-        yield return 0;
+        transform.Translate(input);
     }
 
 }

@@ -40,10 +40,6 @@ public class GridObject : MonoBehaviour {
             {
                 sr.color = new Color(pi.trailColour.r, pi.trailColour.g, pi.trailColour.b, 255);
             }
-            if (gm != null)
-            {
-                gm.CanMove = true;
-            }
         }
     }
 }
