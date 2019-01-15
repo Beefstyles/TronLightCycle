@@ -6,13 +6,10 @@ public class GameControl : MonoBehaviour {
 
     public Transform playerSpawn;
     public GameObject PlayerObject;
-    private GameObject po;
     private Vector3 playerSpawnLoc;
-    private GridGenerator gg;
 
 	void Start ()
     {
-        gg = FindObjectOfType<GridGenerator>();
         StartCoroutine("DelaySpawn");
     }
 
@@ -26,7 +23,7 @@ public class GameControl : MonoBehaviour {
     {
         playerSpawn = GameObject.Find("0,0").transform;
         playerSpawnLoc = new Vector3(playerSpawn.position.x, playerSpawn.position.y, 0F);
-        po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
+        GameObject po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
     }
 	
 }

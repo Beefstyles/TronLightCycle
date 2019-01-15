@@ -16,12 +16,11 @@ public class GridObject : MonoBehaviour {
     public bool TrailMade;
     private SpriteRenderer sr;
     private PlayerInformation pi;
-    private GridMove gm;
+    public PlayerNumber PlayerGridOwner;
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -35,10 +34,10 @@ public class GridObject : MonoBehaviour {
         {
             TrailMade = true;
             pi = coll.GetComponentInParent<PlayerInformation>();
-            gm = coll.GetComponent<GridMove>();
             if (pi != null)
             {
                 sr.color = new Color(pi.trailColour.r, pi.trailColour.g, pi.trailColour.b, 255);
+                PlayerGridOwner = pi.CurrentPlayerNumber;
             }
         }
     }

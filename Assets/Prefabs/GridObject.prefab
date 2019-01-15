@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65618774846255176}
   m_Layer: 0
   m_Name: GridObject
-  m_TagString: Untagged
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
   xpos: 0
   ypos: 0
   TrailMade: 0
+  PlayerGridOwner: 4
 --- !u!212 &212243151531557412
 SpriteRenderer:
   m_ObjectHideFlags: 1

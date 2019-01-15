@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class GridMove : MonoBehaviour {
     
-    [SerializeField]
-    private float _moveSpeed = 5F;
-    private float _gridSize = 1F;
-    private float moveTimer;
     private enum Orientation
     {
         Horizontal,
@@ -34,10 +30,7 @@ public class GridMove : MonoBehaviour {
     {
         InvokeRepeating("MoveBike", invokeTime, repeatTime);
     }
-    void Awake()
-    {
-        moveTimer = 1;
-    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftArrow))

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54888516022746012}
   - component: {fileID: 114635898890404324}
   - component: {fileID: 114331094397602450}
+  - component: {fileID: 114828434481159674}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -166,12 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f26a59779f5e24f8151a52104afcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 3
   bikeDirection: 0
-  allowDiagonals: 0
   input: {x: 0, y: 0}
-  isMoving: 0
-  t: 0
+  invokeTime: 0.1
+  repeatTime: 0.1
 --- !u!114 &114635898890404324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,3 +183,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trailColour: {r: 1, g: 0.88965523, b: 0, a: 0}
+--- !u!114 &114828434481159674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1194470632204264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f918bcf8ca1564eb78f25a836a1b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTime: 0.1
