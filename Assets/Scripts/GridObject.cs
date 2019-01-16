@@ -29,14 +29,15 @@ public class GridObject : MonoBehaviour {
     public bool TrailMade;
     private SpriteRenderer sr;
     private PlayerInformation pi;
+    private PlayerControl playerControl;
     public PlayerNumber PlayerGridOwner;
+
     [SerializeField]
     private bool isWall = false;
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-        
     }
 
     private void OnTriggerEnter(Collider coll)

@@ -21,24 +21,28 @@ public class PlayerControl : MonoBehaviour {
             go = coll.gameObject.GetComponent<GridObject>();
             if (go != null)
             {
-                if (go.TrailMade || go.IsWall)
+                if (go.TrailMade && !go.IsWall)
                 {
-                    StartCoroutine(DestroyBike(go.PlayerGridOwner, pi.CurrentPlayerNumber));
+                    StartCoroutine(DestroyBike(go.PlayerGridOwner, pi.CurrentPlayerNumber, hitWall: false));
+                }
+                if (go.IsWall)
+                {
+                    StartCoroutine(DestroyBike(go.PlayerGridOwner, pi.CurrentPlayerNumber, hitWall: true));
                 }
             }
         }
     }
 
-    IEnumerator DestroyBike(PlayerNumber HitGridOwner, PlayerNumber CurrentPlayerNumber)
+    IEnumerator DestroyBike(PlayerNumber HitGridOwner, PlayerNumber CurrentPlayerNumber, bool hitWall)
     {
         yield return new WaitForSeconds(deathTime);
-        if (HitGridOwner == CurrentPlayerNumber)
+        if (HitGridOwner == CurrentPlayerNumber && !hitWall)
         {
             Debug.Log("You totally hit your own trail you fool");
         }
         else
         {
-            if(CurrentPlayerNumber != PlayerNumber.None)
+            if(!hitWall)
             {
                 Debug.Log("You hit the trail of somebody else i.e. " + CurrentPlayerNumber);
             }
