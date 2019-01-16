@@ -21,7 +21,7 @@ public class GameControl : MonoBehaviour {
 
     private void FindSpawnLocAndSpawn()
     {
-        playerSpawn = GameObject.Find("0,0").transform;
+        playerSpawn = GameObject.Find("2,2").transform;
         playerSpawnLoc = new Vector3(playerSpawn.position.x, playerSpawn.position.y, 0F);
         GameObject po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
     }

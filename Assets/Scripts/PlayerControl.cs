@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour {
             go = coll.gameObject.GetComponent<GridObject>();
             if (go != null)
             {
-                if (go.TrailMade)
+                if (go.TrailMade || go.IsWall)
                 {
                     StartCoroutine(DestroyBike(go.PlayerGridOwner, pi.CurrentPlayerNumber));
                 }
@@ -38,7 +38,15 @@ public class PlayerControl : MonoBehaviour {
         }
         else
         {
-            Debug.Log("You hit the trail of somebody else i.e. " + CurrentPlayerNumber);
+            if(CurrentPlayerNumber != PlayerNumber.None)
+            {
+                Debug.Log("You hit the trail of somebody else i.e. " + CurrentPlayerNumber);
+            }
+            else
+            {
+                Debug.Log("You hit a wall");
+            }
+            
         }
         Destroy(this.gameObject);
     }

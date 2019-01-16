@@ -13,14 +13,30 @@ public class GridObject : MonoBehaviour {
     public int Xpos { get { return xpos; } set { xpos = value; } }
     public int Ypos { get { return ypos; } set { ypos = value; } }
 
+    public bool IsWall
+    {
+        get
+        {
+            return isWall;
+        }
+
+        set
+        {
+            isWall = value;
+        }
+    }
+
     public bool TrailMade;
     private SpriteRenderer sr;
     private PlayerInformation pi;
     public PlayerNumber PlayerGridOwner;
+    [SerializeField]
+    private bool isWall = false;
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -30,7 +46,7 @@ public class GridObject : MonoBehaviour {
 
     private void OnTriggerExit(Collider coll)
     {
-        if (!TrailMade && coll.tag == "Player")
+        if (!TrailMade && !isWall && coll.tag == "Player")
         {
             TrailMade = true;
             pi = coll.GetComponentInParent<PlayerInformation>();
@@ -39,6 +55,14 @@ public class GridObject : MonoBehaviour {
                 sr.color = new Color(pi.trailColour.r, pi.trailColour.g, pi.trailColour.b, 255);
                 PlayerGridOwner = pi.CurrentPlayerNumber;
             }
+        }
+    }
+
+    public void SetWallStatus()
+    {
+        if (isWall)
+        {
+            sr.color = Color.black;
         }
     }
 }

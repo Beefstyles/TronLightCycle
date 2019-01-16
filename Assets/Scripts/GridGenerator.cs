@@ -56,11 +56,16 @@ public class GridGenerator : MonoBehaviour {
                     go.transform.position.y + y);
                 grid[x, y] = go;
                 goHolder = go.GetComponent<GridObject>();
-                if(goHolder != null)
+                if (goHolder != null)
                 {
                     goHolder.Xpos = x;
                     goHolder.Ypos = y;
                     go.name = x + "," + y;
+                    if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
+                    {
+                        goHolder.IsWall = true;
+                        goHolder.SetWallStatus();
+                    }
                 }
             }
         }
