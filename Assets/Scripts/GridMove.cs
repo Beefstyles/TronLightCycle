@@ -18,17 +18,33 @@ public class GridMove : MonoBehaviour {
         Right
     };
     
-    private Orientation gridOrientation = Orientation.Horizontal;
     [SerializeField]
     private Direction bikeDirection = Direction.Up;
     [SerializeField]
     private Vector2 input = Vector2.up;
     [SerializeField]
     private float invokeTime, repeatTime;
+    private PlayerInformation playerInformation;
  
     void Start()
     {
+        playerInformation = GetComponent<PlayerInformation>();
         InvokeRepeating("MoveBike", invokeTime, repeatTime);
+    }
+
+    void CheckForPlayerInput()
+    {
+        switch (playerInformation.CurrentPlayerNumber)
+        {
+            case (PlayerNumber.Player1):
+                break;
+            case (PlayerNumber.Player2):
+                break;
+            case (PlayerNumber.Player3):
+                break;
+            case (PlayerNumber.Player4):
+                break;
+        }
     }
 
     void Update()
