@@ -49,40 +49,40 @@ public class GridMove : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            if(bikeDirection != Direction.Right)
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
-                input = Vector2.left;
-                bikeDirection = Direction.Left;
+                if (bikeDirection != Direction.Right)
+                {
+                    input = Vector2.left;
+                    bikeDirection = Direction.Left;
+                }
             }
-        }
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            if(bikeDirection != Direction.Left)
+            if (Input.GetKey(KeyCode.RightArrow))
             {
-                input = Vector2.right;
-                bikeDirection = Direction.Right;
+                if (bikeDirection != Direction.Left)
+                {
+                    input = Vector2.right;
+                    bikeDirection = Direction.Right;
+                }
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                if (bikeDirection != Direction.Down)
+                {
+                    input = Vector2.up;
+                    bikeDirection = Direction.Up;
+                }
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+        {
+                if (bikeDirection != Direction.Up)
+                {
+                    input = Vector2.down;
+                    bikeDirection = Direction.Down;
+                }
             }
         }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            if (bikeDirection != Direction.Down)
-            {
-                input = Vector2.up;
-                bikeDirection = Direction.Up;
-            }
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            if(bikeDirection != Direction.Up)
-            {
-                input = Vector2.down;
-                bikeDirection = Direction.Down;
-            }
-        }
-    }
 
     void MoveBike()
     {
