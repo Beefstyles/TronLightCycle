@@ -21,9 +21,24 @@ public class GameControl : MonoBehaviour {
 
     private void FindSpawnLocAndSpawn()
     {
+        //SpawnAI();
+        SpawnHuman();
+    }
+
+    private void SpawnHuman()
+    {
         playerSpawn = GameObject.Find("2,2").transform;
         playerSpawnLoc = new Vector3(playerSpawn.position.x, playerSpawn.position.y, 0F);
         GameObject po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
+        po.GetComponent<GridMove>().IsHuman = true;
+    }
+
+    private void SpawnAI()
+    {
+        playerSpawn = GameObject.Find("2,2").transform;
+        playerSpawnLoc = new Vector3(playerSpawn.position.x, playerSpawn.position.y, 0F);
+        GameObject po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
+        po.GetComponent<GridMove>().IsHuman = false;
     }
 	
 }

@@ -25,7 +25,21 @@ public class GridMove : MonoBehaviour {
     [SerializeField]
     private float invokeTime, repeatTime;
     private PlayerInformation playerInformation;
- 
+    public bool IsHuman;
+
+    public Vector2 Input
+    {
+        get
+        {
+            return input;
+        }
+
+        set
+        {
+            input = value;
+        }
+    }
+
     void Start()
     {
         playerInformation = GetComponent<PlayerInformation>();
@@ -49,44 +63,48 @@ public class GridMove : MonoBehaviour {
 
     void Update()
     {
-            if (Input.GetKey(KeyCode.LeftArrow))
+        if (IsHuman)
+        {
+            if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))
             {
                 if (bikeDirection != Direction.Right)
                 {
-                    input = Vector2.left;
+                    Input = Vector2.left;
                     bikeDirection = Direction.Left;
                 }
             }
 
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (UnityEngine.Input.GetKey(KeyCode.RightArrow))
             {
                 if (bikeDirection != Direction.Left)
                 {
-                    input = Vector2.right;
+                    Input = Vector2.right;
                     bikeDirection = Direction.Right;
                 }
             }
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (UnityEngine.Input.GetKey(KeyCode.UpArrow))
             {
                 if (bikeDirection != Direction.Down)
                 {
-                    input = Vector2.up;
+                    Input = Vector2.up;
                     bikeDirection = Direction.Up;
                 }
             }
-            if (Input.GetKey(KeyCode.DownArrow))
-        {
+            if (UnityEngine.Input.GetKey(KeyCode.DownArrow))
+            {
                 if (bikeDirection != Direction.Up)
                 {
-                    input = Vector2.down;
+                    Input = Vector2.down;
                     bikeDirection = Direction.Down;
                 }
             }
         }
+    }
+            
 
     void MoveBike()
     {
-        transform.Translate(input);
+        transform.Translate(Input);
     }
 
 }

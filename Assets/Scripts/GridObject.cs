@@ -34,6 +34,7 @@ public class GridObject : MonoBehaviour {
 
     [SerializeField]
     private bool isWall = false;
+    public bool IsObstacle;
 
     void Awake()
     {
@@ -50,6 +51,7 @@ public class GridObject : MonoBehaviour {
         if (!TrailMade && !isWall && coll.tag == "Player")
         {
             TrailMade = true;
+            IsObstacle = true;
             pi = coll.GetComponentInParent<PlayerInformation>();
             if (pi != null)
             {
@@ -63,6 +65,7 @@ public class GridObject : MonoBehaviour {
     {
         if (isWall)
         {
+            IsObstacle = true;
             sr.color = Color.black;
         }
     }

@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour {
     {
         if(coll.gameObject.tag == "Grid")
         {
+            Debug.Log("Trigger");
             go = coll.gameObject.GetComponent<GridObject>();
             if (go != null)
             {
