@@ -10,7 +10,7 @@ public class GridMove : MonoBehaviour {
         Vertical
     };
 
-    private enum Direction
+    public enum Direction
     {
         Up,
         Down,
@@ -18,14 +18,13 @@ public class GridMove : MonoBehaviour {
         Right
     };
     
-    [SerializeField]
+
     private Direction bikeDirection = Direction.Up;
     [SerializeField]
     private Vector2 input = Vector2.up;
     [SerializeField]
     private float invokeTime, repeatTime;
     private PlayerInformation playerInformation;
-    public bool IsHuman;
 
     public Vector2 Input
     {
@@ -37,6 +36,19 @@ public class GridMove : MonoBehaviour {
         set
         {
             input = value;
+        }
+    }
+
+    public Direction BikeDirection
+    {
+        get
+        {
+            return bikeDirection;
+        }
+
+        set
+        {
+            bikeDirection = value;
         }
     }
 
@@ -63,39 +75,39 @@ public class GridMove : MonoBehaviour {
 
     void Update()
     {
-        if (IsHuman)
+        if (playerInformation.IsHuman)
         {
             if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))
             {
-                if (bikeDirection != Direction.Right)
+                if (BikeDirection != Direction.Right)
                 {
                     Input = Vector2.left;
-                    bikeDirection = Direction.Left;
+                    BikeDirection = Direction.Left;
                 }
             }
 
             if (UnityEngine.Input.GetKey(KeyCode.RightArrow))
             {
-                if (bikeDirection != Direction.Left)
+                if (BikeDirection != Direction.Left)
                 {
                     Input = Vector2.right;
-                    bikeDirection = Direction.Right;
+                    BikeDirection = Direction.Right;
                 }
             }
             if (UnityEngine.Input.GetKey(KeyCode.UpArrow))
             {
-                if (bikeDirection != Direction.Down)
+                if (BikeDirection != Direction.Down)
                 {
                     Input = Vector2.up;
-                    bikeDirection = Direction.Up;
+                    BikeDirection = Direction.Up;
                 }
             }
             if (UnityEngine.Input.GetKey(KeyCode.DownArrow))
             {
-                if (bikeDirection != Direction.Up)
+                if (BikeDirection != Direction.Up)
                 {
                     Input = Vector2.down;
-                    bikeDirection = Direction.Down;
+                    BikeDirection = Direction.Down;
                 }
             }
         }

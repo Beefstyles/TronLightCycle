@@ -11,6 +11,8 @@ public class PlayerInformation : MonoBehaviour {
 
     public Color trailColour;
 
+    public bool IsHuman;
+
     private PlayerNumber currentPlayerNumber;
 
     public PlayerNumber CurrentPlayerNumber

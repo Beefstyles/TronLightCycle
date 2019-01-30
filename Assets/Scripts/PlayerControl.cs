@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour {
 
     private GridObject go;
-    private PlayerInformation pi;
+    private PlayerInformation playerInformation;
     [SerializeField]
     private float deathTime = 0.1F;
+    private AIControl aiControl;
 
     void Awake()
     {
-        pi = GetComponent<PlayerInformation>();
+        playerInformation = GetComponent<PlayerInformation>();
     }
 
     void OnTriggerEnter(Collider coll)
@@ -23,14 +24,22 @@ public class PlayerControl : MonoBehaviour {
             {
                 if (go.TrailMade && !go.IsWall)
                 {
-                    StartCoroutine(DestroyBike(go.PlayerGridOwner, pi.CurrentPlayerNumber, hitWall: false));
+                    StartCoroutine(DestroyBike(go.PlayerGridOwner, playerInformation.CurrentPlayerNumber, hitWall: false));
                 }
                 if (go.IsWall)
                 {
-                    StartCoroutine(DestroyBike(go.PlayerGridOwner, pi.CurrentPlayerNumber, hitWall: true));
+                    StartCoroutine(DestroyBike(go.PlayerGridOwner, playerInformation.CurrentPlayerNumber, hitWall: true));
                 }
             }
             go = null;
+            if (!playerInformation.IsHuman)
+            {
+                aiControl = GetComponent<AIControl>();
+                if(aiControl != null)
+                {
+                    aiControl.SetNewDirection();
+                }
+            }
         }
     }
 

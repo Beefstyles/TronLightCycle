@@ -21,8 +21,8 @@ public class GameControl : MonoBehaviour {
 
     private void FindSpawnLocAndSpawn()
     {
-        //SpawnAI();
-        SpawnHuman();
+        SpawnAI();
+        //SpawnHuman();
     }
 
     private void SpawnHuman()
@@ -30,7 +30,7 @@ public class GameControl : MonoBehaviour {
         playerSpawn = GameObject.Find("2,2").transform;
         playerSpawnLoc = new Vector3(playerSpawn.position.x, playerSpawn.position.y, 0F);
         GameObject po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
-        po.GetComponent<GridMove>().IsHuman = true;
+        po.GetComponent<PlayerInformation>().IsHuman = true;
     }
 
     private void SpawnAI()
@@ -38,7 +38,7 @@ public class GameControl : MonoBehaviour {
         playerSpawn = GameObject.Find("2,2").transform;
         playerSpawnLoc = new Vector3(playerSpawn.position.x, playerSpawn.position.y, 0F);
         GameObject po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
-        po.GetComponent<GridMove>().IsHuman = false;
+        po.GetComponent<PlayerInformation>().IsHuman = false;
     }
 	
 }
