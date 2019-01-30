@@ -1,0 +1,3 @@
+The collider of the parent is the sum of all colliders of itself and it's childs (compound collider).
+
+If you want them to behave individually, they need their own kinematic rigidbodys.

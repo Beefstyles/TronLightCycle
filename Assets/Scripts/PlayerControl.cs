@@ -18,7 +18,6 @@ public class PlayerControl : MonoBehaviour {
     {
         if(coll.gameObject.tag == "Grid")
         {
-            Debug.Log("Trigger");
             go = coll.gameObject.GetComponent<GridObject>();
             if (go != null)
             {
@@ -31,6 +30,7 @@ public class PlayerControl : MonoBehaviour {
                     StartCoroutine(DestroyBike(go.PlayerGridOwner, pi.CurrentPlayerNumber, hitWall: true));
                 }
             }
+            go = null;
         }
     }
 
