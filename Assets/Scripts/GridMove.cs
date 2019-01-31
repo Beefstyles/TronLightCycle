@@ -25,6 +25,7 @@ public class GridMove : MonoBehaviour {
     [SerializeField]
     private float invokeTime, repeatTime;
     private PlayerInformation playerInformation;
+    public bool AICanMove = false;
 
     public Vector2 Input
     {
@@ -116,7 +117,10 @@ public class GridMove : MonoBehaviour {
 
     void MoveBike()
     {
-        transform.Translate(Input);
+        if (AICanMove)
+        {
+            transform.Translate(Input);
+        }
     }
 
 }

@@ -27,10 +27,12 @@ public class AIControl : MonoBehaviour {
             case (GridMove.Direction.Up):
                 if (TopSquareSafe)
                 {
-                    return;
+                    Debug.Log("Top safe");
+                    return;                    
                 }
                 else
                 {
+                    Debug.Log("Check dir");
                     CheckDirection(true);
                 }
                 break;
@@ -76,10 +78,12 @@ public class AIControl : MonoBehaviour {
                 int randDirection = Random.Range(0, 1);
                 if (randDirection == 0)
                 {
+                    Debug.Log("Move Left");
                     SetBikeDirectionAndInput("Left");
                 }
                 else
                 {
+                    Debug.Log("Move Right");
                     SetBikeDirectionAndInput("Right");
                 }
             }

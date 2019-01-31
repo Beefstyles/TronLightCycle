@@ -9,10 +9,12 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField]
     private float deathTime = 0.1F;
     private AIControl aiControl;
+    private GridMove gridMove;
 
     void Awake()
     {
         playerInformation = GetComponent<PlayerInformation>();
+        gridMove = GetComponent<GridMove>();
     }
 
     void OnTriggerEnter(Collider coll)
@@ -37,9 +39,19 @@ public class PlayerControl : MonoBehaviour {
                 aiControl = GetComponent<AIControl>();
                 if(aiControl != null)
                 {
+                    gridMove.AICanMove = false;
                     aiControl.SetNewDirection();
+                    gridMove.AICanMove = true;
                 }
             }
+        }
+    }
+
+    void OnTriggerExit(Collider coll)
+    {
+        if (aiControl != null)
+        {
+            gridMove.AICanMove = false;
         }
     }
 
