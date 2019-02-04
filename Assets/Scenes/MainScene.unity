@@ -431,8 +431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007040c15ec81d74189d4cb1c7c818d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 100
-  height: 100
+  width: 10
+  height: 10
   gridObject: {fileID: 1996940135810738, guid: 5bc7deaa8503c5043abb7227d4a976b0, type: 2}
   gridParent: {fileID: 1783219996}
 --- !u!4 &1411667701

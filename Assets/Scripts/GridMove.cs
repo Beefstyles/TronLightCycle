@@ -17,8 +17,9 @@ public class GridMove : MonoBehaviour {
         Left,
         Right
     };
-    
 
+
+    [SerializeField]
     private Direction bikeDirection = Direction.Up;
     [SerializeField]
     private Vector2 input = Vector2.up;
@@ -39,6 +40,7 @@ public class GridMove : MonoBehaviour {
             input = value;
         }
     }
+
 
     public Direction BikeDirection
     {

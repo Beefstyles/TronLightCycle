@@ -16,6 +16,7 @@ public class AIControl : MonoBehaviour {
         {
             gridMove.Input = Vector2.up;
             gridMove.BikeDirection = GridMove.Direction.Up;
+            gridMove.AICanMove = true;
         }
 	}
 	
@@ -32,7 +33,6 @@ public class AIControl : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("Check dir");
                     CheckDirection(true);
                 }
                 break;
@@ -78,12 +78,10 @@ public class AIControl : MonoBehaviour {
                 int randDirection = Random.Range(0, 1);
                 if (randDirection == 0)
                 {
-                    Debug.Log("Move Left");
                     SetBikeDirectionAndInput("Left");
                 }
                 else
                 {
-                    Debug.Log("Move Right");
                     SetBikeDirectionAndInput("Right");
                 }
             }
@@ -134,10 +132,12 @@ public class AIControl : MonoBehaviour {
             case ("Left"):
                 gridMove.BikeDirection = GridMove.Direction.Left;
                 gridMove.Input = Vector2.left;
+                Debug.Log("Move left");
                 break;
             case ("Right"):
                 gridMove.BikeDirection = GridMove.Direction.Right;
                 gridMove.Input = Vector2.right;
+                Debug.Log("Move right");
                 break;
             case ("Up"):
                 gridMove.BikeDirection = GridMove.Direction.Up;
@@ -149,6 +149,8 @@ public class AIControl : MonoBehaviour {
                 break;
 
         }
+        gridMove.AICanMove = true;
+
     }
 
 }

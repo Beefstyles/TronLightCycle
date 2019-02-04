@@ -37,26 +37,17 @@ public class PlayerControl : MonoBehaviour {
             if (!playerInformation.IsHuman)
             {
                 aiControl = GetComponent<AIControl>();
-                if(aiControl != null)
+                if (aiControl != null)
                 {
-                    gridMove.AICanMove = false;
                     aiControl.SetNewDirection();
-                    gridMove.AICanMove = true;
                 }
             }
         }
     }
 
-    void OnTriggerExit(Collider coll)
-    {
-        if (aiControl != null)
-        {
-            gridMove.AICanMove = false;
-        }
-    }
-
     IEnumerator DestroyBike(PlayerNumber HitGridOwner, PlayerNumber CurrentPlayerNumber, bool hitWall)
     {
+        gridMove.AICanMove = false;
         yield return new WaitForSeconds(deathTime);
         if (HitGridOwner == CurrentPlayerNumber && !hitWall)
         {
