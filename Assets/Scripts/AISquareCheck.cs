@@ -64,6 +64,7 @@ public class AISquareCheck : MonoBehaviour {
                             break;
                     }
                 }
+                aiControl.SetNewDirection();
             }
 
         }

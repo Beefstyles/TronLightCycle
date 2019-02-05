@@ -28,7 +28,6 @@ public class AIControl : MonoBehaviour {
             case (GridMove.Direction.Up):
                 if (TopSquareSafe)
                 {
-                    Debug.Log("Top safe");
                     return;                    
                 }
                 else
@@ -132,12 +131,10 @@ public class AIControl : MonoBehaviour {
             case ("Left"):
                 gridMove.BikeDirection = GridMove.Direction.Left;
                 gridMove.Input = Vector2.left;
-                Debug.Log("Move left");
                 break;
             case ("Right"):
                 gridMove.BikeDirection = GridMove.Direction.Right;
                 gridMove.Input = Vector2.right;
-                Debug.Log("Move right");
                 break;
             case ("Up"):
                 gridMove.BikeDirection = GridMove.Direction.Up;

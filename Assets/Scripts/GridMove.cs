@@ -28,6 +28,8 @@ public class GridMove : MonoBehaviour {
     private PlayerInformation playerInformation;
     public bool AICanMove = false;
 
+    public bool MovementPossible = true;
+
     public Vector2 Input
     {
         get
@@ -119,7 +121,7 @@ public class GridMove : MonoBehaviour {
 
     void MoveBike()
     {
-        if (AICanMove)
+        if (MovementPossible)
         {
             transform.Translate(Input);
         }
