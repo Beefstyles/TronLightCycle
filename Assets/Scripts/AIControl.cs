@@ -14,11 +14,30 @@ public class AIControl : MonoBehaviour {
         gridMove = GetComponent<GridMove>();
         if(gridMove != null)
         {
-            gridMove.Input = Vector2.up;
-            gridMove.BikeDirection = GridMove.Direction.Up;
+            SetRandomDirection();
             gridMove.AICanMove = true;
         }
 	}
+
+    private void SetRandomDirection()
+    {
+        int rand = Random.Range(0, 3);
+        switch (rand)
+        {
+            case (0):
+                SetBikeDirectionAndInput("Up");
+                break;
+            case (1):
+                SetBikeDirectionAndInput("Down");
+                break;
+            case (2):
+                SetBikeDirectionAndInput("Left");
+                break;
+            case (3):
+                SetBikeDirectionAndInput("Right");
+                break;
+        }
+    }
 	
 	public void SetNewDirection()
     {
