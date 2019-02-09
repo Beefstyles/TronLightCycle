@@ -14,40 +14,29 @@ public class AIControl : MonoBehaviour {
         gridMove = GetComponent<GridMove>();
         if(gridMove != null)
         {
-            SetRandomDirection();
+            ChooseRandomDirection("Any", false);
             gridMove.AICanMove = true;
         }
 	}
 
-    private void SetRandomDirection()
-    {
-        int rand = Random.Range(0, 3);
-        switch (rand)
-        {
-            case (0):
-                SetBikeDirectionAndInput("Up");
-                break;
-            case (1):
-                SetBikeDirectionAndInput("Down");
-                break;
-            case (2):
-                SetBikeDirectionAndInput("Left");
-                break;
-            case (3):
-                SetBikeDirectionAndInput("Right");
-                break;
-        }
-    }
 	
 	public void SetNewDirection()
     {
+        int changeDir = Random.Range(0, 10);
         // Current bike direction
         switch (gridMove.BikeDirection)
         {
             case (GridMove.Direction.Up):
                 if (TopSquareSafe)
                 {
-                    return;                    
+                    if(changeDir != 1)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        ChooseRandomDirection("LeftRight", true);
+                    }
                 }
                 else
                 {
@@ -57,7 +46,14 @@ public class AIControl : MonoBehaviour {
             case (GridMove.Direction.Down):
                 if (BottomSquareSafe)
                 {
-                    return;
+                    if (changeDir != 1)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        ChooseRandomDirection("LeftRight", true);
+                    }
                 }
                 else
                 {
@@ -67,7 +63,14 @@ public class AIControl : MonoBehaviour {
             case (GridMove.Direction.Right):
                 if (RightSquareSafe)
                 {
-                    return;
+                    if (changeDir != 1)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        ChooseRandomDirection("UpDown", true);
+                    }
                 }
                 else
                 {
@@ -77,7 +80,14 @@ public class AIControl : MonoBehaviour {
             case (GridMove.Direction.Left):
                 if (LeftSquareSafe)
                 {
-                    return;
+                    if (changeDir != 1)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        ChooseRandomDirection("UpDown", true);
+                    }
                 }
                 else
                 {
@@ -93,15 +103,7 @@ public class AIControl : MonoBehaviour {
         {
             if (LeftSquareSafe && RightSquareSafe)
             {
-                int randDirection = Random.Range(0, 1);
-                if (randDirection == 0)
-                {
-                    SetBikeDirectionAndInput("Left");
-                }
-                else
-                {
-                    SetBikeDirectionAndInput("Right");
-                }
+                ChooseRandomDirection("LeftRight", true);
             }
             else
             {
@@ -119,15 +121,8 @@ public class AIControl : MonoBehaviour {
         {
             if (TopSquareSafe && BottomSquareSafe)
             {
-                int randDirection = Random.Range(0, 1);
-                if (randDirection == 0)
-                {
-                    SetBikeDirectionAndInput("Up");
-                }
-                else
-                {
-                    SetBikeDirectionAndInput("Down");
-                }
+
+                ChooseRandomDirection("UpDown", true);
             }
             else
             {
@@ -167,6 +162,61 @@ public class AIControl : MonoBehaviour {
         }
         gridMove.AICanMove = true;
 
+    }
+
+    private void ChooseRandomDirection(string directionOrientation, bool directionLimited)
+    {
+        int randDirection = 0;
+        if (directionLimited)
+        {
+            randDirection = Random.Range(0, 1);
+        }
+        else
+        {
+            randDirection = Random.Range(0, 3);
+        }
+        
+        switch (directionOrientation)
+        {
+            case ("LeftRight"):
+                if (randDirection == 0)
+                {
+                    SetBikeDirectionAndInput("Left");
+                }
+                else
+                {
+                    SetBikeDirectionAndInput("Right");
+                }
+                break;
+            case ("UpDown"):
+                if (randDirection == 0)
+                {
+                    SetBikeDirectionAndInput("Up");
+                }
+                else
+                {
+                    SetBikeDirectionAndInput("Down");
+                }
+                break;
+            case ("Any"):
+                switch (randDirection)
+                {
+                    case (0):
+                        SetBikeDirectionAndInput("Up");
+                        break;
+                    case (1):
+                        SetBikeDirectionAndInput("Down");
+                        break;
+                    case (2):
+                        SetBikeDirectionAndInput("Left");
+                        break;
+                    case (3):
+                        SetBikeDirectionAndInput("Right");
+                        break;
+                }
+                break;
+                
+        }
     }
 
 }
