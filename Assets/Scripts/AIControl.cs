@@ -181,21 +181,35 @@ public class AIControl : MonoBehaviour {
             case ("LeftRight"):
                 if (randDirection == 0)
                 {
-                    SetBikeDirectionAndInput("Left");
+                    if (LeftSquareSafe)
+                    {
+                        SetBikeDirectionAndInput("Left");
+                    }
                 }
                 else
                 {
-                    SetBikeDirectionAndInput("Right");
+                    if (RightSquareSafe)
+                    {
+                        SetBikeDirectionAndInput("Right");
+                    }
                 }
                 break;
             case ("UpDown"):
                 if (randDirection == 0)
                 {
-                    SetBikeDirectionAndInput("Up");
+                    if (TopSquareSafe)
+                    {
+                        SetBikeDirectionAndInput("Up");
+                    }
+                        
                 }
                 else
                 {
-                    SetBikeDirectionAndInput("Down");
+                    if (BottomSquareSafe)
+                    {
+                        SetBikeDirectionAndInput("Down");
+                    }
+                    
                 }
                 break;
             case ("Any"):
