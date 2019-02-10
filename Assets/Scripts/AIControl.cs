@@ -9,10 +9,24 @@ public class AIControl : MonoBehaviour {
 
     public bool TopSquareSafe, BottomSquareSafe, LeftSquareSafe, RightSquareSafe;
 
+    private PlayerInformation playerInfo;
+
 	void Start ()
     {
         gridMove = GetComponent<GridMove>();
-        if(gridMove != null)
+        playerInfo = GetComponent<PlayerInformation>();
+        if(playerInfo != null)
+        {
+            if (playerInfo.IsHuman)
+            {
+                Destroy(GetComponent<AIControl>());
+            }
+        }
+        else
+        {
+            Debug.LogError("No player Info Found");
+        }
+        if (gridMove != null)
         {
             ChooseRandomDirection("Any", false);
             gridMove.AICanMove = true;
@@ -209,7 +223,6 @@ public class AIControl : MonoBehaviour {
                     {
                         SetBikeDirectionAndInput("Down");
                     }
-                    
                 }
                 break;
             case ("Any"):
