@@ -10,12 +10,14 @@ public class AIControl : MonoBehaviour {
     public bool TopSquareSafe, BottomSquareSafe, LeftSquareSafe, RightSquareSafe;
 
     private PlayerInformation playerInfo;
+    private PlayerControl playerControl;
 
 	void Start ()
     {
         gridMove = GetComponent<GridMove>();
         playerInfo = GetComponent<PlayerInformation>();
-        if(playerInfo != null)
+        playerControl = GetComponent<PlayerControl>();
+        if (playerInfo != null)
         {
             if (playerInfo.IsHuman)
             {
@@ -123,11 +125,11 @@ public class AIControl : MonoBehaviour {
             {
                 if (LeftSquareSafe)
                 {
-                    SetBikeDirectionAndInput("Left");
+                    playerControl.SetBikeDirectionAndInput("Left");
                 }
                 else
                 {
-                    SetBikeDirectionAndInput("Right");
+                    playerControl.SetBikeDirectionAndInput("Right");
                 }
             }
         }
@@ -142,41 +144,17 @@ public class AIControl : MonoBehaviour {
             {
                 if (TopSquareSafe)
                 {
-                    SetBikeDirectionAndInput("Up");
+                    playerControl.SetBikeDirectionAndInput("Up");
                 }
                 else
                 {
-                    SetBikeDirectionAndInput("Down");
+                    playerControl.SetBikeDirectionAndInput("Down");
                 }
             }
         }
     }
 
-    private void SetBikeDirectionAndInput(string direction)
-    {
-        switch (direction)
-        {
-            case ("Left"):
-                gridMove.BikeDirection = GridMove.Direction.Left;
-                gridMove.Input = Vector2.left;
-                break;
-            case ("Right"):
-                gridMove.BikeDirection = GridMove.Direction.Right;
-                gridMove.Input = Vector2.right;
-                break;
-            case ("Up"):
-                gridMove.BikeDirection = GridMove.Direction.Up;
-                gridMove.Input = Vector2.up;
-                break;
-            case ("Down"):
-                gridMove.BikeDirection = GridMove.Direction.Down;
-                gridMove.Input = Vector2.down;
-                break;
-
-        }
-        gridMove.AICanMove = true;
-
-    }
+    
 
     private void ChooseRandomDirection(string directionOrientation, bool directionLimited)
     {
@@ -197,14 +175,14 @@ public class AIControl : MonoBehaviour {
                 {
                     if (LeftSquareSafe)
                     {
-                        SetBikeDirectionAndInput("Left");
+                        playerControl.SetBikeDirectionAndInput("Left");
                     }
                 }
                 else
                 {
                     if (RightSquareSafe)
                     {
-                        SetBikeDirectionAndInput("Right");
+                        playerControl.SetBikeDirectionAndInput("Right");
                     }
                 }
                 break;
@@ -213,7 +191,7 @@ public class AIControl : MonoBehaviour {
                 {
                     if (TopSquareSafe)
                     {
-                        SetBikeDirectionAndInput("Up");
+                        playerControl.SetBikeDirectionAndInput("Up");
                     }
                         
                 }
@@ -221,7 +199,7 @@ public class AIControl : MonoBehaviour {
                 {
                     if (BottomSquareSafe)
                     {
-                        SetBikeDirectionAndInput("Down");
+                        playerControl.SetBikeDirectionAndInput("Down");
                     }
                 }
                 break;
@@ -229,16 +207,16 @@ public class AIControl : MonoBehaviour {
                 switch (randDirection)
                 {
                     case (0):
-                        SetBikeDirectionAndInput("Up");
+                        playerControl.SetBikeDirectionAndInput("Up");
                         break;
                     case (1):
-                        SetBikeDirectionAndInput("Down");
+                        playerControl.SetBikeDirectionAndInput("Down");
                         break;
                     case (2):
-                        SetBikeDirectionAndInput("Left");
+                        playerControl.SetBikeDirectionAndInput("Left");
                         break;
                     case (3):
-                        SetBikeDirectionAndInput("Right");
+                        playerControl.SetBikeDirectionAndInput("Right");
                         break;
                 }
                 break;

@@ -41,11 +41,6 @@ public class GridObject : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
     }
 
-    private void OnTriggerEnter(Collider coll)
-    {
-        
-    }
-
     private void OnTriggerExit(Collider coll)
     {
         if (!TrailMade && !isWall && coll.tag == "Player")

@@ -60,4 +60,81 @@ public class PlayerControl : MonoBehaviour {
         }
         Destroy(this.gameObject);
     }
+
+    public void SetBikeDirectionAndInput(string direction)
+    {
+        switch (direction)
+        {
+            case ("Left"):
+                gridMove.BikeDirection = GridMove.Direction.Left;
+                gridMove.Input = Vector2.left;
+                break;
+            case ("Right"):
+                gridMove.BikeDirection = GridMove.Direction.Right;
+                gridMove.Input = Vector2.right;
+                break;
+            case ("Up"):
+                gridMove.BikeDirection = GridMove.Direction.Up;
+                gridMove.Input = Vector2.up;
+                break;
+            case ("Down"):
+                gridMove.BikeDirection = GridMove.Direction.Down;
+                gridMove.Input = Vector2.down;
+                break;
+
+        }
+        gridMove.AICanMove = true;
+
+    }
+
+    void Update()
+    {
+        if (playerInformation.IsHuman)
+        {
+            if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))
+            {
+                if (gridMove.BikeDirection != GridMove.Direction.Right)
+                {
+                    SetBikeDirectionAndInput("Left");
+                }
+            }
+
+            if (UnityEngine.Input.GetKey(KeyCode.RightArrow))
+            {
+                if (gridMove.BikeDirection != GridMove.Direction.Left)
+                {
+                    SetBikeDirectionAndInput("Right");
+                }
+            }
+            if (UnityEngine.Input.GetKey(KeyCode.UpArrow))
+            {
+                if (gridMove.BikeDirection != GridMove.Direction.Down)
+                {
+                    SetBikeDirectionAndInput("Up");
+                }
+            }
+            if (UnityEngine.Input.GetKey(KeyCode.DownArrow))
+            {
+                if (gridMove.BikeDirection != GridMove.Direction.Up)
+                {
+                    SetBikeDirectionAndInput("Down");
+                }
+            }
+        }
+    }
+
+    void CheckForPlayerInput()
+    {
+        switch (playerInformation.CurrentPlayerNumber)
+        {
+            case (PlayerNumber.Player1):
+                break;
+            case (PlayerNumber.Player2):
+                break;
+            case (PlayerNumber.Player3):
+                break;
+            case (PlayerNumber.Player4):
+                break;
+        }
+    }
 }

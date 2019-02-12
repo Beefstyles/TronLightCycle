@@ -27,7 +27,7 @@ public class GameControl : MonoBehaviour {
 
     private void SpawnHuman()
     {
-        playerSpawn = GameObject.Find("6,6").transform;
+        playerSpawn = GameObject.Find("50,50").transform;
         playerSpawnLoc = new Vector3(playerSpawn.position.x, playerSpawn.position.y, 0F);
         GameObject po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
         po.GetComponent<PlayerInformation>().IsHuman = true;
