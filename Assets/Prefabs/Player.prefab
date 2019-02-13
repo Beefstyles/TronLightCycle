@@ -392,6 +392,7 @@ MonoBehaviour:
   input: {x: 0, y: 0}
   invokeTime: 0.1
   repeatTime: 0.1
+  BoostFactor: 1
   AICanMove: 0
   MovementPossible: 1
 --- !u!114 &114404172720958428
@@ -452,3 +453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathTime: 0.1
+  boostTimeMax: 300
+  currentBoostTime: 0
+  boostIncrease: 0.5

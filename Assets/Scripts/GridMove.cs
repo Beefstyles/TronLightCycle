@@ -25,6 +25,8 @@ public class GridMove : MonoBehaviour {
     private Vector2 input = Vector2.up;
     [SerializeField]
     private float invokeTime, repeatTime;
+
+    public float BoostFactor;
     public bool AICanMove = false;
 
     public bool MovementPossible = true;
@@ -58,7 +60,7 @@ public class GridMove : MonoBehaviour {
 
     void Start()
     {
-        InvokeRepeating("MoveBike", invokeTime, repeatTime);
+        InvokeRepeating("MoveBike", invokeTime, repeatTime * BoostFactor);
     }
 
     void MoveBike()

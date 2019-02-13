@@ -10,6 +10,13 @@ public class PlayerControl : MonoBehaviour {
     private float deathTime = 0.1F;
     private AIControl aiControl;
     private GridMove gridMove;
+    [SerializeField]
+    private float boostTimeMax;
+    [SerializeField]
+    private float currentBoostTime;
+    private bool boostEnabled;
+    [SerializeField]
+    private float boostIncrease;
 
     void Awake()
     {
@@ -59,6 +66,15 @@ public class PlayerControl : MonoBehaviour {
             
         }
         Destroy(this.gameObject);
+    }
+
+    void Start()
+    {
+        if (playerInformation.IsHuman)
+        {
+            SetBikeDirectionAndInput("Up");
+        }
+        boostEnabled = false;
     }
 
     public void SetBikeDirectionAndInput(string direction)
@@ -120,6 +136,20 @@ public class PlayerControl : MonoBehaviour {
                     SetBikeDirectionAndInput("Down");
                 }
             }
+
+            if (Input.GetButtonDown("Boost"))
+            {
+                if (!boostEnabled)
+                {
+                    EnableBoost();
+                }
+            }
+
+            if (boostEnabled)
+            {
+                BoostBikeSpeed();
+            }
+            
         }
     }
 
@@ -136,5 +166,26 @@ public class PlayerControl : MonoBehaviour {
             case (PlayerNumber.Player4):
                 break;
         }
+    }
+
+    void EnableBoost()
+    {
+        currentBoostTime = boostTimeMax;
+        boostEnabled = true;
+        gridMove.BoostFactor = boostIncrease;
+    }
+
+    void BoostBikeSpeed()
+    {
+        if (currentBoostTime >= 0)
+        {
+            currentBoostTime -= Time.deltaTime;
+        }
+        else
+        {
+            gridMove.BoostFactor = 1;
+            boostEnabled = false;
+        }
+        
     }
 }
