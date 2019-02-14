@@ -173,6 +173,7 @@ public class PlayerControl : MonoBehaviour {
         currentBoostTime = boostTimeMax;
         boostEnabled = true;
         gridMove.BoostFactor = boostIncrease;
+        gridMove.UpdateBikeMovement();
     }
 
     void BoostBikeSpeed()
@@ -185,6 +186,7 @@ public class PlayerControl : MonoBehaviour {
         {
             gridMove.BoostFactor = 1;
             boostEnabled = false;
+            gridMove.UpdateBikeMovement();
         }
         
     }

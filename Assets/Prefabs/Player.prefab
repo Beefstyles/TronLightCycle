@@ -453,6 +453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathTime: 0.1
-  boostTimeMax: 300
+  boostTimeMax: 5
   currentBoostTime: 0
-  boostIncrease: 0.5
+  boostIncrease: 0.8

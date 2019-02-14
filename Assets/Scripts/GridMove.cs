@@ -60,6 +60,12 @@ public class GridMove : MonoBehaviour {
 
     void Start()
     {
+        UpdateBikeMovement();
+    }
+
+    public void UpdateBikeMovement()
+    {
+        CancelInvoke();
         InvokeRepeating("MoveBike", invokeTime, repeatTime * BoostFactor);
     }
 
