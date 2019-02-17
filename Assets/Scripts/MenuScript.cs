@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour {
 
 
+    [SerializeField]
     Transform menuPanel;
     Event keyEvent;
     Text buttonText;
@@ -17,7 +18,6 @@ public class MenuScript : MonoBehaviour {
 
     void Start()
     {
-        menuPanel = transform.Find("InputPanel");
         menuPanel.gameObject.SetActive(false);
 
         waitingForKey = false;
@@ -110,7 +110,27 @@ public class MenuScript : MonoBehaviour {
         switch (keyName)
         {
             case ("Player1Left"):
+                GameManager.GM.Player1Left = newKey;
+                buttonText.text = GameManager.GM.Player1Left.ToString();
+                PlayerPrefs.SetString("Player1Left", GameManager.GM.Player1Left.ToString());
+                break;
+            case ("Player1Right"):
+                GameManager.GM.Player1Right = newKey;
+                buttonText.text = GameManager.GM.Player1Right.ToString();
+                PlayerPrefs.SetString("Player1Right", GameManager.GM.Player1Right.ToString());
+                break;
+            case ("Player1Up"):
+                GameManager.GM.Player1Up = newKey;
+                buttonText.text = GameManager.GM.Player1Right.ToString();
+                PlayerPrefs.SetString("Player1Up", GameManager.GM.Player1Right.ToString());
+                break;
+            case ("Player1Down"):
+                GameManager.GM.Player1Down = newKey;
+                buttonText.text = GameManager.GM.Player1Right.ToString();
+                PlayerPrefs.SetString("Player1Down", GameManager.GM.Player1Right.ToString());
                 break;
         }
+
+        yield return null;
     }
 }

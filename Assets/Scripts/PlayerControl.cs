@@ -107,7 +107,8 @@ public class PlayerControl : MonoBehaviour {
     {
         if (playerInformation.IsHuman)
         {
-            if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))
+            //if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))
+            if(InputManager.instance.KeyDown("Left"))
             {
                 if (gridMove.BikeDirection != GridMove.Direction.Right)
                 {
@@ -115,21 +116,24 @@ public class PlayerControl : MonoBehaviour {
                 }
             }
 
-            if (UnityEngine.Input.GetKey(KeyCode.RightArrow))
+            //if (UnityEngine.Input.GetKey(KeyCode.RightArrow))
+            if (InputManager.instance.KeyDown("Right"))
             {
                 if (gridMove.BikeDirection != GridMove.Direction.Left)
                 {
                     SetBikeDirectionAndInput("Right");
                 }
             }
-            if (UnityEngine.Input.GetKey(KeyCode.UpArrow))
+            //if (UnityEngine.Input.GetKey(KeyCode.UpArrow))
+            if (InputManager.instance.KeyDown("Up"))
             {
                 if (gridMove.BikeDirection != GridMove.Direction.Down)
                 {
                     SetBikeDirectionAndInput("Up");
                 }
             }
-            if (UnityEngine.Input.GetKey(KeyCode.DownArrow))
+            //if (UnityEngine.Input.GetKey(KeyCode.DownArrow))
+            if (InputManager.instance.KeyDown("Down"))
             {
                 if (gridMove.BikeDirection != GridMove.Direction.Up)
                 {
@@ -137,7 +141,8 @@ public class PlayerControl : MonoBehaviour {
                 }
             }
 
-            if (Input.GetButtonDown("Boost"))
+            //if (Input.GetButtonDown("Boost"))
+            if (InputManager.instance.KeyDown("Boost"))
             {
                 if (!boostEnabled)
                 {

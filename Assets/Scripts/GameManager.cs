@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
         Player1Right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player1RightKey", "RightArrow"));
         Player1Up = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player1UpKey", "UpArrow"));
         Player1Down = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player1DownKey", "DownArrow"));
-        Player1Boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player1BoostKey","LeftCtrl"));
+        Player1Boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player1BoostKey","LeftControl"));
     }
 
 }
