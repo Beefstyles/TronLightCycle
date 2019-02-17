@@ -24,9 +24,21 @@ public class InputManager : MonoBehaviour {
         DontDestroyOnLoad(this);
     }
 
-    public bool KeyDown(string key)
+    public bool GetKeyDown(string key)
     {
         if (Input.GetKeyDown(keybindings.CheckKey(key)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool GetKey(string key)
+    {
+        if (Input.GetKey(keybindings.CheckKey(key)))
         {
             return true;
         }

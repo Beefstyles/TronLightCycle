@@ -853,6 +853,7 @@ GameObject:
   - component: {fileID: 694165133}
   - component: {fileID: 694165132}
   - component: {fileID: 694165134}
+  - component: {fileID: 694165135}
   m_Layer: 0
   m_Name: _MASTERGAMEOBJECT
   m_TagString: Untagged
@@ -898,6 +899,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c125eeb59c0cb54c8a7f1ade281902c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &694165135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 694165131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ea919affe10aa429bdb25fe1a13cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keybindings: {fileID: 11400000, guid: 093c0e16fbcc6d643a0c1262cded5053, type: 2}
 --- !u!1 &785403144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,12 +2237,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1801071501}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30e707e9d4081bf4fb99063d18d29831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuPanel: {fileID: 1625627660}
+  menuPanel: {fileID: 1011760298}
 --- !u!1 &2007140634
 GameObject:
   m_ObjectHideFlags: 0
