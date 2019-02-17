@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public KeyCode Player1Right { get; set; }
     public KeyCode Player1Up { get; set; }
     public KeyCode Player1Down { get; set; }
+    public KeyCode Player1Boost { get; set; }
 
     void Awake()
     {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetString("Player1Right", Player1Right.ToString());
         PlayerPrefs.SetString("Player1Up", Player1Up.ToString());
         PlayerPrefs.SetString("Player1Down", Player1Down.ToString());
+        PlayerPrefs.SetString("Player1Boost", Player1Boost.ToString());
 
         if (GM == null)
         {
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour {
         Player1Right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player1RightKey", "RightArrow"));
         Player1Up = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player1UpKey", "UpArrow"));
         Player1Down = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player1DownKey", "DownArrow"));
+        Player1Boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player1BoostKey","LeftCtrl"));
     }
 
 }
