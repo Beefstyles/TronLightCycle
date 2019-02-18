@@ -19,8 +19,36 @@ public class Keybindings : ScriptableObject {
                 return up;
             case ("Down"):
                 return down;
+            case ("Boost"):
+                return boost;
             default:
                 return KeyCode.None;
+        }
+    }
+
+    public bool SetKey(string targetKeyToChange, KeyCode key)
+    {
+        switch (targetKeyToChange)
+        {
+            case ("Left"):
+                left = key;
+                return true;
+            case ("Right"):
+                right = key;
+                return true;
+            case ("Up"):
+                up = key;
+                return true;
+            case ("Down"):
+                down = key;
+                return true;
+            case ("Boost"):
+                boost = key;
+                return true;
+            default:
+                Debug.LogError("Target key to change " + targetKeyToChange + " not found");
+                return false;
+                
         }
     }
 }

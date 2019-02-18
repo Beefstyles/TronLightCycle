@@ -47,4 +47,9 @@ public class InputManager : MonoBehaviour {
             return false;
         }
     }
+
+    public bool ChangeKeyBinding(string targetControl, KeyCode keyToChangeTo)
+    {
+        return (keybindings.SetKey(targetControl, keyToChangeTo));
+    }
 }

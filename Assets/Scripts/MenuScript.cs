@@ -21,28 +21,6 @@ public class MenuScript : MonoBehaviour {
         menuPanel.gameObject.SetActive(false);
 
         waitingForKey = false;
-
-        for(int i = 0; i < menuPanel.childCount; i++)
-        {
-            switch (menuPanel.GetChild(i).name)
-            {
-                case ("LeftKey"):
-                    menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameManager.GM.Player1Left.ToString();
-                    break;
-                case ("RightKey"):
-                    menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameManager.GM.Player1Right.ToString();
-                    break;
-                case ("UpKey"):
-                    menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameManager.GM.Player1Up.ToString();
-                    break;
-                case ("DownKey"):
-                    menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameManager.GM.Player1Down.ToString();
-                    break;
-                case ("BoostKey"):
-                    menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameManager.GM.Player1Boost.ToString();
-                    break;
-            }
-        }
     }
 
     void Update()
@@ -50,13 +28,13 @@ public class MenuScript : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Escape) && !menuPanel.gameObject.activeSelf)
         {
             menuPanel.gameObject.SetActive(true);
-            Time.timeScale = 0F;
+            Time.timeScale = 0;
         }
 
         else if (Input.GetKeyDown(KeyCode.Escape) && menuPanel.gameObject.activeSelf)
         {
             menuPanel.gameObject.SetActive(false);
-            Time.timeScale = 1F;
+            Time.timeScale = 1;
         }
     }
 
@@ -109,25 +87,25 @@ public class MenuScript : MonoBehaviour {
 
         switch (keyName)
         {
-            case ("Player1Left"):
-                GameManager.GM.Player1Left = newKey;
-                buttonText.text = GameManager.GM.Player1Left.ToString();
-                PlayerPrefs.SetString("Player1Left", GameManager.GM.Player1Left.ToString());
+            case ("Left"):
+                InputManager.instance.ChangeKeyBinding("Left", newKey);
+                buttonText.text = newKey.ToString();
                 break;
-            case ("Player1Right"):
-                GameManager.GM.Player1Right = newKey;
-                buttonText.text = GameManager.GM.Player1Right.ToString();
-                PlayerPrefs.SetString("Player1Right", GameManager.GM.Player1Right.ToString());
+            case ("Right"):
+                InputManager.instance.ChangeKeyBinding("Right", newKey);
+                buttonText.text = newKey.ToString();
                 break;
-            case ("Player1Up"):
-                GameManager.GM.Player1Up = newKey;
-                buttonText.text = GameManager.GM.Player1Right.ToString();
-                PlayerPrefs.SetString("Player1Up", GameManager.GM.Player1Right.ToString());
+            case ("Up"):
+                InputManager.instance.ChangeKeyBinding("Up", newKey);
+                buttonText.text = newKey.ToString();
                 break;
-            case ("Player1Down"):
-                GameManager.GM.Player1Down = newKey;
-                buttonText.text = GameManager.GM.Player1Right.ToString();
-                PlayerPrefs.SetString("Player1Down", GameManager.GM.Player1Right.ToString());
+            case ("Down"):
+                InputManager.instance.ChangeKeyBinding("Down", newKey);
+                buttonText.text = newKey.ToString();
+                break;
+            case ("Boost"):
+                InputManager.instance.ChangeKeyBinding("Boost", newKey);
+                buttonText.text = newKey.ToString();
                 break;
         }
 
