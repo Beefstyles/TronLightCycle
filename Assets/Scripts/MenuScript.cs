@@ -15,12 +15,16 @@ public class MenuScript : MonoBehaviour {
 
     bool waitingForKey;
 
+    [SerializeField]
+    private GameObject waitForKeyPrompt;
+
 
     void Start()
     {
         menuPanel.gameObject.SetActive(false);
 
         waitingForKey = false;
+        waitForKeyPrompt.SetActive(false);
     }
 
     void Update()
@@ -82,9 +86,19 @@ public class MenuScript : MonoBehaviour {
     public IEnumerator AssignKey(string keyName)
     {
         waitingForKey = true;
+        if (waitForKeyPrompt != null)
+        {
+            waitForKeyPrompt.SetActive(true);
+            waitForKeyPrompt.GetComponentInChildren<Text>().text = string.Format("Set a button for {0}", keyName);
+        }
+        else
+        {
+            Debug.LogError("Missing waitForKeyPrompt gameobject");
+        }
 
         yield return WaitForKey(); // Executes endlessly until user presses a key
 
+        waitForKeyPrompt.SetActive(false);
         switch (keyName)
         {
             case ("Left"):
