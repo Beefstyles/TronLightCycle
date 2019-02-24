@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+
 
 public class ButtonKeyName : MonoBehaviour
 {
     public string KeyName;
     private Text buttonText;
     Button btn;
-    EventSystem UIEventSystem;
 
     private void Awake()
     {
-        UIEventSystem = EventSystem.current;
         btn = this.GetComponent<Button>(); ;
         buttonText = btn.GetComponentInChildren<Text>();
         switch (KeyName)
