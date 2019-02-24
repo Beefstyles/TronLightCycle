@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuScript : MonoBehaviour {
 
@@ -17,12 +18,15 @@ public class MenuScript : MonoBehaviour {
 
     [SerializeField]
     private GameObject waitForKeyPrompt;
+    EventSystem UIEventSystem;
+    [SerializeField]
+    private GameObject firstSelectedObject;
 
 
     void Start()
     {
         menuPanel.gameObject.SetActive(false);
-
+        UIEventSystem = EventSystem.current;
         waitingForKey = false;
         waitForKeyPrompt.SetActive(false);
     }
@@ -32,6 +36,7 @@ public class MenuScript : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Escape) && !menuPanel.gameObject.activeSelf)
         {
             menuPanel.gameObject.SetActive(true);
+            UIEventSystem.SetSelectedGameObject(firstSelectedObject);
             Time.timeScale = 0;
         }
 
@@ -101,24 +106,25 @@ public class MenuScript : MonoBehaviour {
         waitForKeyPrompt.SetActive(false);
         switch (keyName)
         {
+            //TODO - Update the player number to actually change
             case ("Left"):
-                InputManager.instance.ChangeKeyBinding("Left", newKey);
+                InputManager.instance.ChangeKeyBinding("Left", newKey, PlayerNumber.Player1);
                 buttonText.text = newKey.ToString();
                 break;
             case ("Right"):
-                InputManager.instance.ChangeKeyBinding("Right", newKey);
+                InputManager.instance.ChangeKeyBinding("Right", newKey, PlayerNumber.Player1);
                 buttonText.text = newKey.ToString();
                 break;
             case ("Up"):
-                InputManager.instance.ChangeKeyBinding("Up", newKey);
+                InputManager.instance.ChangeKeyBinding("Up", newKey, PlayerNumber.Player1);
                 buttonText.text = newKey.ToString();
                 break;
             case ("Down"):
-                InputManager.instance.ChangeKeyBinding("Down", newKey);
+                InputManager.instance.ChangeKeyBinding("Down", newKey, PlayerNumber.Player1);
                 buttonText.text = newKey.ToString();
                 break;
             case ("Boost"):
-                InputManager.instance.ChangeKeyBinding("Boost", newKey);
+                InputManager.instance.ChangeKeyBinding("Boost", newKey, PlayerNumber.Player1);
                 buttonText.text = newKey.ToString();
                 break;
         }

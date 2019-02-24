@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42d9fb8bb56a6e4ab64e466c275c01b, type: 3}
   m_Name: Player3KeyBindings
   m_EditorClassIdentifier: 
-  left: 0
-  right: 0
-  up: 0
-  down: 0
-  boost: 0
+  left: 106
+  right: 108
+  up: 105
+  down: 107
+  boost: 32

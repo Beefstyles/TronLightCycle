@@ -64,6 +64,25 @@ public class InputManager : MonoBehaviour {
         return (SelectCorrectKeybindings(playerNumber).SetKey(targetControl, keyToChangeTo));
     }
 
+    public string ReturnKeyBindings(string keyName, PlayerNumber playerNumber)
+    {
+        switch (keyName)
+        {
+            case ("Left"):
+                return SelectCorrectKeybindings(playerNumber).left.ToString();
+            case ("Right"):
+                return SelectCorrectKeybindings(playerNumber).right.ToString();
+            case ("Up"):
+                return SelectCorrectKeybindings(playerNumber).up.ToString();
+            case ("Down"):
+                return SelectCorrectKeybindings(playerNumber).down.ToString();
+            case ("Boost"):
+                return SelectCorrectKeybindings(playerNumber).boost.ToString();
+            default:
+                return "ERROR";
+        }
+    }
+
     private Keybindings SelectCorrectKeybindings(PlayerNumber playerNumber)
     {
         switch (playerNumber)
