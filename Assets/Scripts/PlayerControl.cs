@@ -107,7 +107,7 @@ public class PlayerControl : MonoBehaviour {
     {
         if (playerInformation.IsHuman)
         {
-            if(InputManager.instance.GetKeyDown("Left"))
+            if(InputManager.instance.GetKeyDown("Left", playerInformation.CurrentPlayerNumber))
             {
                 if (gridMove.BikeDirection != GridMove.Direction.Right)
                 {
@@ -115,7 +115,7 @@ public class PlayerControl : MonoBehaviour {
                 }
             }
 
-            if (InputManager.instance.GetKeyDown("Right"))
+            if (InputManager.instance.GetKeyDown("Right", playerInformation.CurrentPlayerNumber))
             {
                 if (gridMove.BikeDirection != GridMove.Direction.Left)
                 {
@@ -123,7 +123,7 @@ public class PlayerControl : MonoBehaviour {
                 }
             }
 
-            if (InputManager.instance.GetKeyDown("Up"))
+            if (InputManager.instance.GetKeyDown("Up", playerInformation.CurrentPlayerNumber))
             {
                 if (gridMove.BikeDirection != GridMove.Direction.Down)
                 {
@@ -131,7 +131,7 @@ public class PlayerControl : MonoBehaviour {
                 }
             }
 
-            if (InputManager.instance.GetKeyDown("Down"))
+            if (InputManager.instance.GetKeyDown("Down", playerInformation.CurrentPlayerNumber))
             {
                 if (gridMove.BikeDirection != GridMove.Direction.Up)
                 {
@@ -139,7 +139,7 @@ public class PlayerControl : MonoBehaviour {
                 }
             }
 
-            if (InputManager.instance.GetKeyDown("Boost"))
+            if (InputManager.instance.GetKeyDown("Boost", playerInformation.CurrentPlayerNumber))
             {
                 if (!boostEnabled)
                 {

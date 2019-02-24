@@ -31,8 +31,13 @@ public class ButtonKeyName : MonoBehaviour
                 buttonText.text = InputManager.instance.keybindings.boost.ToString();
                 break;
             default:
-                Debug.LogError("Error in seeting " + KeyName);
+                Debug.LogError("Error in setting " + KeyName);
                 break;
         }
+    }
+
+    private void UpdateKeyBindingsDisplay()
+    {
+
     }
 }
