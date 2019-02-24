@@ -21,7 +21,28 @@ public class MenuScript : MonoBehaviour {
     EventSystem UIEventSystem;
     [SerializeField]
     private GameObject firstSelectedObject;
+    [SerializeField]
+    private GameObject inputButtonsParent;
+    private ButtonKeyName[] inputButtons;
 
+    private PlayerNumber menuPlayerNumber;
+
+    public PlayerNumber MenuPlayerNumber
+    {
+        get
+        {
+            return menuPlayerNumber;
+        }
+
+        set
+        {
+            menuPlayerNumber = value;
+            foreach(var inputButton in inputButtons)
+            {
+                inputButton.UpdateKeyBindingsDisplay();
+            }
+        }
+    }
 
     void Start()
     {
@@ -36,6 +57,7 @@ public class MenuScript : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Escape) && !menuPanel.gameObject.activeSelf)
         {
             menuPanel.gameObject.SetActive(true);
+            inputButtons = inputButtonsParent.GetComponentsInChildren<ButtonKeyName>();
             UIEventSystem.SetSelectedGameObject(firstSelectedObject);
             Time.timeScale = 0;
         }
@@ -43,6 +65,7 @@ public class MenuScript : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.Escape) && menuPanel.gameObject.activeSelf)
         {
             menuPanel.gameObject.SetActive(false);
+            inputButtons = null;
             Time.timeScale = 1;
         }
     }
@@ -131,4 +154,5 @@ public class MenuScript : MonoBehaviour {
 
         yield return null;
     }
+
 }
