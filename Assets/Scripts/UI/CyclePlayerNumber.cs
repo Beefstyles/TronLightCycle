@@ -11,7 +11,6 @@ public class CyclePlayerNumber : MonoBehaviour, IPointerEnterHandler, IPointerEx
     private string[] playerNumbers;
     private string currentPlayerNumber;
     private int playerNumberIndex;
-    private Button cyclePlayerButton;
     [SerializeField]
     private bool buttonIsSelected;
     private MenuScript menuScript;
@@ -20,7 +19,6 @@ public class CyclePlayerNumber : MonoBehaviour, IPointerEnterHandler, IPointerEx
     void Start()
     {
         menuScript = FindObjectOfType<MenuScript>();
-        cyclePlayerButton = GetComponent<Button>();
         CyclePlayerText = GetComponentInChildren<Text>();
         SetPlayerNumber(1);
         playerNumberIndex = 1;

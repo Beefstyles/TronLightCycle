@@ -24,7 +24,9 @@ public class GridMove : MonoBehaviour {
     [SerializeField]
     private Vector2 input = Vector2.up;
     [SerializeField]
-    private float invokeTime, repeatTime;
+    private float invokeTime;
+    [SerializeField]
+    private float repeatTime;
 
     public float BoostFactor;
     public bool AICanMove = false;
