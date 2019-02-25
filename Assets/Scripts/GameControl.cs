@@ -22,15 +22,19 @@ public class GameControl : MonoBehaviour {
     private void FindSpawnLocAndSpawn()
     {
         SpawnAI();
-        SpawnHuman();
+        SpawnHuman("20,20", PlayerNumber.Player1);
+        //SpawnHuman("40,40", PlayerNumber.Player2);
+        //SpawnHuman("50,50", PlayerNumber.Player3);
+        //SpawnHuman("60,60", PlayerNumber.Player4);
     }
 
-    private void SpawnHuman()
+    private void SpawnHuman(string transformXY, PlayerNumber playerNumber)
     {
-        playerSpawn = GameObject.Find("50,50").transform;
+        playerSpawn = GameObject.Find(transformXY).transform;
         playerSpawnLoc = new Vector3(playerSpawn.position.x, playerSpawn.position.y, 0F);
         GameObject po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
         po.GetComponent<PlayerInformation>().IsHuman = true;
+        po.GetComponent<PlayerInformation>().CurrentPlayerNumber = playerNumber;
     }
 
     private void SpawnAI()
@@ -39,6 +43,7 @@ public class GameControl : MonoBehaviour {
         playerSpawnLoc = new Vector3(playerSpawn.position.x, playerSpawn.position.y, 0F);
         GameObject po = Instantiate(PlayerObject, playerSpawnLoc, Quaternion.identity);
         po.GetComponent<PlayerInformation>().IsHuman = false;
+        po.GetComponent<PlayerInformation>().CurrentPlayerNumber = PlayerNumber.None;
     }
 	
 }
