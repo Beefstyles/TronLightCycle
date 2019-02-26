@@ -11,13 +11,27 @@ public class CameraMovement : MonoBehaviour {
     {
         cam = Camera.main;
         gg = FindObjectOfType<GridGenerator>();
-        StartCoroutine(DelayCameraMovement());
+        if (cam.orthographic)
+        {
+            StartCoroutine(DelayCameraMovementOrtho());
+        }
+        else
+        {
+            StartCoroutine(DelayCameraMovementPerspective());
+        }
+        
 	}
 	
-    IEnumerator DelayCameraMovement()
+    IEnumerator DelayCameraMovementOrtho()
     {
         yield return new WaitForSeconds(seconds: 0.01F);
         cam.orthographicSize = gg.Width / 2;
         cam.transform.position = new Vector3(gg.Width / 2  - 0.5F, gg.Height / 2 - 0.5F, -5F);
+    }
+    IEnumerator DelayCameraMovementPerspective()
+    {
+        yield return new WaitForSeconds(seconds: 0.01F);
+        cam.transform.position = new Vector3(gg.Width / 2, gg.Height / 2 - 0.5F, -gg.Width - 8);
+        cam.fieldOfView = gg.Width / 2;
     }
 }
