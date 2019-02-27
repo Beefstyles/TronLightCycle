@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class ButtonKeyName : MonoBehaviour
 {
     public string KeyName;
-    private Text buttonText;
+    private TextMeshProUGUI buttonText;
     Button btn;
     MenuScript menuScript;
 
@@ -15,7 +16,7 @@ public class ButtonKeyName : MonoBehaviour
     {
         menuScript = FindObjectOfType<MenuScript>();
         btn = this.GetComponent<Button>(); ;
-        buttonText = btn.GetComponentInChildren<Text>();
+        buttonText = btn.GetComponentInChildren<TextMeshProUGUI>();
         UpdateKeyBindingsDisplay();
     }
 

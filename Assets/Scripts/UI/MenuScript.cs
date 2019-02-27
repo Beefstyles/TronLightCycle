@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class MenuScript : MonoBehaviour {
 
@@ -10,8 +11,8 @@ public class MenuScript : MonoBehaviour {
     [SerializeField]
     Transform menuPanel;
     Event keyEvent;
-    Text buttonText;
-
+    TextMeshProUGUI buttonText;
+    
     KeyCode newKey;
 
     bool waitingForKey;
@@ -94,7 +95,7 @@ public class MenuScript : MonoBehaviour {
     }
 
     //Assigns buttonText to the text component of the button that was pressed
-    public void SendText(Text text)
+    public void SendText(TextMeshProUGUI text)
     {
         buttonText = text;
     }
@@ -117,7 +118,7 @@ public class MenuScript : MonoBehaviour {
         if (waitForKeyPrompt != null)
         {
             waitForKeyPrompt.SetActive(true);
-            waitForKeyPrompt.GetComponentInChildren<Text>().text = string.Format("Set a button for {0}", keyName);
+            waitForKeyPrompt.GetComponentInChildren<TextMeshProUGUI>().text = string.Format("Set a button for {0}", keyName);
         }
         else
         {

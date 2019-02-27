@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class CyclePlayerNumber : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private Text CyclePlayerText;
+    private TextMeshProUGUI CyclePlayerText;
     private PlayerNumber playerNumber;
     private string[] playerNumbers;
     private string currentPlayerNumber;
@@ -19,7 +20,7 @@ public class CyclePlayerNumber : MonoBehaviour, IPointerEnterHandler, IPointerEx
     void Start()
     {
         menuScript = FindObjectOfType<MenuScript>();
-        CyclePlayerText = GetComponentInChildren<Text>();
+        CyclePlayerText = GetComponentInChildren<TextMeshProUGUI>();
         SetPlayerNumber(1);
         playerNumberIndex = 1;
         playerNumbers = System.Enum.GetNames(typeof(PlayerNumber));
