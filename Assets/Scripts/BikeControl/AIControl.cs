@@ -9,6 +9,7 @@ public class AIControl : MonoBehaviour {
 
     public bool TopSquareSafe, BottomSquareSafe, LeftSquareSafe, RightSquareSafe;
 
+    public GameObject TopSquare, BottomSquare, LeftSquare, RightSquare;
     private PlayerInformation playerInfo;
     private PlayerControl playerControl;
 
