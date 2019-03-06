@@ -30,18 +30,20 @@ public class BikeModelLookToFront : MonoBehaviour
                 case (GridMove.Direction.Up):
 
                     //transform.forward = transform.position - aiControl.TopSquare.transform.position;
-                    Quaternion rotation = Quaternion.LookRotation(aiControl.TopSquare.transform.position
-                        - transform.position, transform.TransformDirection(Vector3.up));
-                    transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+                    transform.rotation = Quaternion.Euler(-180, 90, 90);
+                    Debug.Log("Rotating up");
                     break;
                 case (GridMove.Direction.Down):
+                    transform.rotation = Quaternion.Euler(0, -90, 90);
                     transform.forward = transform.position - aiControl.BottomSquare.transform.position;
                     break;
                 case (GridMove.Direction.Left):
-                    transform.forward = transform.position - aiControl.LeftSquare.transform.position;
+                    transform.rotation = Quaternion.Euler(-90, 0, -0);
+                    //transform.forward = transform.position - aiControl.LeftSquare.transform.position;
                     break;
                 case (GridMove.Direction.Right):
-                    transform.forward = transform.position - aiControl.RightSquare.transform.position;
+                    //transform.forward = transform.position - aiControl.RightSquare.transform.position;
+                    transform.rotation = Quaternion.Euler(90, 90, -90);
                     break;
             }
             
