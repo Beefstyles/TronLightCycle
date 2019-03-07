@@ -28,6 +28,7 @@ public class GridMove : MonoBehaviour {
     [SerializeField]
     private float repeatTime;
 
+
     public float BoostFactor;
     public bool AICanMove = false;
 
