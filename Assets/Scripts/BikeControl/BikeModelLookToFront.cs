@@ -10,6 +10,8 @@ public class BikeModelLookToFront : MonoBehaviour
     GridMove gridMove;
     private Vector2 currentVectorDirection;
     private AIControl aiControl;
+    private Vector3 lookDirection;
+    public GameObject Model;
 
     void Awake()
     {
@@ -30,7 +32,8 @@ public class BikeModelLookToFront : MonoBehaviour
                 case (GridMove.Direction.Up):
 
                     //transform.forward = transform.position - aiControl.TopSquare.transform.position;
-                    transform.rotation = Quaternion.Euler(-180, 90, 90);
+                    lookDirection = new Vector3(-180F, -90F, 90F);
+                    Model.transform.rotation = Quaternion.LookRotation(lookDirection);
                     Debug.Log("Rotating up");
                     break;
                 case (GridMove.Direction.Down):
